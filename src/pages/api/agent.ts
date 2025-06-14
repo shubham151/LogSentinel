@@ -4,6 +4,7 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { createReactAgent, AgentExecutor } from "langchain/agents";
 import { pull } from "langchain/hub";
 import { queryLogsTool } from "@/tools/queryLogs";
+import { PromptTemplate } from "@langchain/core/prompts";
 
 type ResponseData = { output: string };
 
@@ -26,7 +27,7 @@ export default async function handler(
       apiKey: process.env.GOOGLE_API_KEY,
     });
 
-    const prompt = await pull("hwchase17/react-chat");
+    const prompt = await pull<PromptTemplate>("hwchase17/react-chat");
 
     const agent = await createReactAgent({
       llm: model,
