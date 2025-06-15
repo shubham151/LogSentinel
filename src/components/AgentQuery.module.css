@@ -26,14 +26,15 @@
 
 /* The text input field */
 .input {
-    flex-grow: 1;
-    /* Takes up available space */
-    padding: 10px 14px;
-    border-radius: 8px;
+    padding: 0.7rem 1rem;
+    border-radius: 9999px;
     border: 1px solid #ccc;
-    font-size: 16px;
-    transition: border-color 0.2s, box-shadow 0.2s;
+    font-size: 0.95rem;
+    width: 100%;
+    background-color: #f9f9f9;
+    color: #1d1d1f;
 }
+
 
 .input:focus {
     border-color: #0070f3;
