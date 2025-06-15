@@ -15,9 +15,9 @@ export const Table: React.FC<TableProps> = ({ data }) => (
           <th>Time</th>
           <th>IP</th>
           <th>Method</th>
-          <th>URL</th>
           <th>Status</th>
           <th>Size</th>
+          <th>URL</th>
         </tr>
       </thead>
       <tbody>
@@ -27,9 +27,9 @@ export const Table: React.FC<TableProps> = ({ data }) => (
             <td>{d.timestamp}</td>
             <td>{d.ip}</td>
             <td>{d.method}</td>
-            <td>{d.url}</td>
             <td>{d.status}</td>
             <td>{d.size}</td>
+            <td>{d.url}</td>
           </tr>
         ))}
       </tbody>
