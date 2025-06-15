@@ -103,5 +103,6 @@
     word-wrap: break-word;
     /* Break words if needed */
     overflow-x: auto;
+    color: black;
     /* Add horizontal scroll if necessary */
 }
