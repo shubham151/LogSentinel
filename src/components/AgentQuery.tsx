@@ -53,7 +53,7 @@ export function AgentQuery() {
           disabled={isLoading}
         />
         <button type="submit" disabled={isLoading} className={styles.button}>
-          {isLoading ? "Thinking..." : "Ask"}
+          {isLoading ? "Working..." : "Ask"}
         </button>
       </form>
 

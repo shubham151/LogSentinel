@@ -90,7 +90,16 @@ export const Chart: React.FC<ChartProps> = ({ data }) => {
             tick={{ fontSize: 12 }}
           />
           <YAxis allowDecimals={false} />
-          <Tooltip />
+          <Tooltip
+            contentStyle={{
+              backgroundColor: "#1f1f1f",
+              border: "1px solid #333",
+              borderRadius: 8,
+              color: "#fff",
+            }}
+            labelStyle={{ color: "#fff" }}
+            itemStyle={{ color: "#fff" }}
+          />
           <Area
             type="monotone"
             dataKey="count"
