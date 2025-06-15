@@ -1,17 +1,17 @@
 .container {
-    /* background: #ffffff; */
-    border-radius: 16px;
-    border: 1px solid #e0e0e0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-    padding: 1rem;
+    border-radius: 20px;
+    border: 1px solid #2c2c2e;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    background: #1c1c1e;
     overflow-x: auto;
 }
 
 .title {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: 600;
-    margin-bottom: 1rem;
-    color: #1d1d1f;
+    margin-bottom: 1.25rem;
+    color: #f2f2f7;
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", sans-serif;
 }
 
@@ -20,31 +20,32 @@
     border-collapse: collapse;
     font-family: -apple-system, BlinkMacSystemFont, "San Francisco", "Helvetica Neue", sans-serif;
     font-size: 0.95rem;
-    color: #1d1d1f;
-    background-color: #fff;
+    color: #f2f2f7;
+    background-color: #1c1c1e;
 }
 
 .table th,
 .table td {
     text-align: left;
-    padding: 14px 18px;
-    border-bottom: 1px solid #ebebf0;
+    padding: 16px 20px;
+    border-bottom: 1px solid #2c2c2e;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
 
 .table th {
-    background-color: #f5f5f7;
-    color: #3c3c43;
+    background-color: #2c2c2e;
+    color: #d1d1d6;
     font-weight: 600;
+    font-size: 0.9rem;
 }
 
 .table tr:nth-child(even) {
-    background-color: #fafafa;
+    background-color: #2a2a2c;
 }
 
 .table tr:hover {
-    background-color: #f1f1f3;
-    transition: background 0.2s ease-in-out;
+    background-color: #3a3a3c;
+    transition: background-color 0.2s ease;
 }
