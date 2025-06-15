@@ -5,6 +5,7 @@ import { Chart } from "./Chart";
 import { Table } from "./Table";
 // import { MapView } from "./MapView";
 import styles from "./Dashboard.module.css";
+import { useState } from "react";
 
 type FetchError = Error & {
   info?: any;
@@ -29,11 +30,15 @@ const fetcher = async (url: string): Promise<any> => {
 };
 
 export function Dashboard() {
+  const [lastUpdated, setLastUpdated] = useState(new Date().toLocaleString());
   const { data, error, isLoading } = useSWR<any[], FetchError>(
     "/api/logs",
     fetcher,
     {
-      refreshInterval: 30_000,
+      refreshInterval: 30000,
+      onSuccess: () => {
+        setLastUpdated(new Date().toLocaleString());
+      },
     }
   );
 
@@ -77,7 +82,7 @@ export function Dashboard() {
       </div> */}
 
       <div className={styles.sectionCard}>
-        <Table data={data} />
+        <Table data={data} lastUpdated={lastUpdated} />
       </div>
     </div>
   );

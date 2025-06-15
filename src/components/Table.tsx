@@ -4,11 +4,12 @@ import styles from "./Table.module.css";
 
 interface TableProps {
   data: any[];
+  lastUpdated: string;
 }
 
-export const Table: React.FC<TableProps> = ({ data }) => (
+export const Table: React.FC<TableProps> = ({ data, lastUpdated }) => (
   <div className={styles.container}>
-    <h2 className={styles.title}>Latest Logs</h2>
+    <h2 className={styles.title}>Last update: {lastUpdated}</h2>
     <table className={styles.table}>
       <thead>
         <tr>
