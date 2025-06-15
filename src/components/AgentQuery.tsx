@@ -1,11 +1,12 @@
-// src/components/AgentQuery.tsx
 "use client";
-import { useState, FormEvent } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import styles from "./AgentQuery.module.css";
+import { marked } from "marked";
 
 export function AgentQuery() {
   const [input, setInput] = useState("");
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState(""); // Raw markdown
+  const [htmlOutput, setHtmlOutput] = useState(""); // HTML parsed
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -14,6 +15,7 @@ export function AgentQuery() {
     setIsLoading(true);
     setError("");
     setResponse("");
+    setHtmlOutput("");
 
     try {
       const res = await fetch("/api/agent", {
@@ -29,6 +31,8 @@ export function AgentQuery() {
 
       const data = await res.json();
       setResponse(data.output);
+      const html = await marked.parse(data.output || "");
+      setHtmlOutput(html);
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -55,10 +59,12 @@ export function AgentQuery() {
 
       {error && <div className={styles.error}>{error}</div>}
 
-      {response && (
+      {htmlOutput && (
         <div className={styles.response}>
           <h3>Agent's Answer:</h3>
-          <pre>{response}</pre>
+          <pre>
+            <div dangerouslySetInnerHTML={{ __html: htmlOutput }} />
+          </pre>
         </div>
       )}
     </div>
