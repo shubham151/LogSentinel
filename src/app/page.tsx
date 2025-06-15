@@ -1,28 +1,50 @@
 // src/app/page.tsx
 
+"use client";
+
+import { useState } from "react";
 import { Dashboard } from "@/components/Dashboard";
 import { AgentQuery } from "@/components/AgentQuery";
+import styles from "@/components/Tabs.module.css";
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<"agent" | "dashboard" | "about">(
+    "agent"
+  );
+
   return (
-    <div style={{ padding: 20, maxWidth: "1200px", margin: "0 auto" }}>
-      <h1>Log Analytics</h1>
+    <div className={styles.container}>
+      <h1 className={styles.heading}>Logsentinel | Agent for Log Analytics</h1>
 
-      {/* AgentQuery is a Client Component, responsible for its own state */}
-      <AgentQuery />
+      <div className={styles.tabHeader}>
+        <button
+          className={`${styles.tab} ${
+            activeTab === "agent" ? styles.active : ""
+          }`}
+          onClick={() => setActiveTab("agent")}
+        >
+          Log Agent
+        </button>
+        <button
+          className={`${styles.tab} ${
+            activeTab === "dashboard" ? styles.active : ""
+          }`}
+          onClick={() => setActiveTab("dashboard")}
+        >
+          <span className={styles.live}>Live</span> Dashboard
+        </button>
+        <button
+          className={activeTab === "about" ? styles.activeTab : styles.tab}
+          onClick={() => setActiveTab("about")}
+        >
+          About
+        </button>
+      </div>
 
-      <hr
-        style={{
-          margin: "40px 0",
-          border: "none",
-          borderTop: "1px solid #eaeaea",
-        }}
-      />
-
-      <h2>Live Dashboard</h2>
-
-      {/* Dashboard is a Client Component that will handle all its own data fetching */}
-      <Dashboard />
+      <div className={styles.tabContent}>
+        {activeTab === "agent" && <AgentQuery />}
+        {activeTab === "dashboard" && <Dashboard />}
+      </div>
     </div>
   );
 }
