@@ -5,8 +5,8 @@ import { marked } from "marked";
 
 export function AgentQuery() {
   const [input, setInput] = useState("");
-  const [response, setResponse] = useState(""); // Raw markdown
-  const [htmlOutput, setHtmlOutput] = useState(""); // HTML parsed
+  const [response, setResponse] = useState("");
+  const [htmlOutput, setHtmlOutput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 

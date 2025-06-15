@@ -33,12 +33,6 @@ export default function Home() {
         >
           <span className={styles.live}>Live</span> Dashboard
         </button>
-        <button
-          className={activeTab === "about" ? styles.activeTab : styles.tab}
-          onClick={() => setActiveTab("about")}
-        >
-          About
-        </button>
       </div>
 
       <div className={styles.tabContent}>

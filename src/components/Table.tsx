@@ -2,9 +2,18 @@
 import React from "react";
 import styles from "./Table.module.css";
 
+interface LogEntry {
+  timestamp: string;
+  ip: string;
+  method: string;
+  status: number;
+  size: number;
+  url: string;
+}
+
 interface TableProps {
-  data: any[];
-  lastUpdated: string;
+  data: LogEntry[];
+  lastUpdated?: string;
 }
 
 export const Table: React.FC<TableProps> = ({ data, lastUpdated }) => (

@@ -22,7 +22,7 @@ const parseApacheTimestamp = (raw: string): Date | null => {
   );
   if (!match) return null;
 
-  const [_, day, mon, year, hour, min, sec, tz] = match;
+  const [, day, mon, year, hour, min, sec, tz] = match;
   const months = {
     Jan: "01",
     Feb: "02",
