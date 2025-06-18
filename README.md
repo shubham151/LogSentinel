@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LogSentinel
 
-## Getting Started
+**Conversational AI for Server Log Analysis**
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Inspiration
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Modern web applications produce millions of logs daily — yet developers still rely on manual grepping and filtering to find issues. **LogSentinel** was born out of the need to make logs conversational. Ask it anything in plain English, and get real-time, structured answers, backed by your actual server logs.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What It Does
 
-## Learn More
+**LogSentinel** is an AI-powered log analytics agent that:
 
-To learn more about Next.js, take a look at the following resources:
+- Ingests server access logs into **MongoDB**.
+- Indexes them using **vector search** for semantic understanding.
+- Lets users ask questions like:
+  - “Show all 500 errors from the last 30 minutes”
+  - “Which IPs made the most POST requests today?”
+- Returns structured and actionable results via a responsive web interface.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## How We Built It
 
-## Deploy on Vercel
+- **MongoDB Atlas** – Stores structured logs using CSV imports, supports full-text and vector indexing.
+- **LangChain** – Powers the RAG (retrieval-augmented generation) pipeline for natural language queries.
+- **Google Gemini API** – Interprets natural language input and generates accurate responses.
+- **Next.js** – Frontend for a fast, reactive, and user-friendly interface.
+- **LangChain tools** – Connect user prompts to dynamic MongoDB queries and visualize the results.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Challenges
+
+- Converting unstructured logs into a queryable schema.
+- Creating fallback mechanisms for vague or malformed queries.
+- Translating natural language into precise MongoDB queries.
+- Designing an intuitive UI that bridges both chat and real-time metrics.
+
+---
+
+## Accomplishments
+
+- End-to-end natural language interface for real-time log analysis.
+- Responsive dashboard with live metrics and visual feedback.
+- Smart agent that handles ambiguity and can ask for clarification.
+- Unified view combining chatbot interaction with structured insights.
+
+---
+
+## What We Learned
+
+- Building hybrid systems using **RAG + structured DB querying**.
+- Deep integration of **LangChain** with **MongoDB**.
+- Real-time analytics best practices in **Next.js**.
+- How to manage ambiguity, intent recognition, and fallback flows in language agents.
+
+---
+
+## What’s Next
+
+- Add user authentication and scoped log access.
+- Enable filtering and querying of structured (JSON) logs via natural language.
+- Export insights to **Slack** or **email alerts**.
+- Integrate anomaly detection for proactive monitoring.
+- Expand log support: application logs, DB logs, and more.
+- Build an interactive response UI for deeper insights.
+
+---
+
+## Dataset Used
+
+We used a cleaned and structured version of the **Web Server Access Logs Dataset** from [Kaggle](https://www.kaggle.com/). The logs include:
+
+| Column     | Description                             |
+|------------|-----------------------------------------|
+| `timestamp`| Date and time of the request (Apache format) |
+| `ip`       | Client IP address                       |
+| `method`   | HTTP method (e.g., GET, POST)           |
+| `url`      | Requested URL path                      |
+| `status`   | HTTP status code                        |
+| `size`     | Response size in bytes                  |
+
+---
+
+## Try Asking
+
+- `"Show all 404s from the past hour"`
+- `"Which IP made the most GET requests yesterday?"`
+- `"List top 10 endpoints by request volume"`
+
+---
+
+## Tech Stack
+
+- **MongoDB Atlas**
+- **LangChain**
+- **Google Gemini**
+- **Next.js**
+- **CSV / Log Parsing**
+- **Vector Search / Full-Text Search**
+
