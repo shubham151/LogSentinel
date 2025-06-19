@@ -1,4 +1,4 @@
-# LogSentinel
+# LogSentinel [Live Demo](https://nesons.com/)
 
 **Conversational AI for Server Log Analysis**
 
